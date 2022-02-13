@@ -28,8 +28,6 @@ void dec2bin(int dec_num){
         // std::cout << dec_num % 2;
         printf("%s", (dec_num % 2));
     }
-    
-   
 }
 
 int main(int argc, char const *argv[])
