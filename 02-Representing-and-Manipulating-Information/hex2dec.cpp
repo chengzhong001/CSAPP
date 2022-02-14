@@ -20,20 +20,10 @@ int bin2dec(const char *bin_num)
     return result;
 }
 
-void dec2bin(int dec_num){
-    char* result;
-    while (dec_num!=0)
-    {
-        dec_num = dec_num / 2;
-        // std::cout << dec_num % 2;
-        printf("%s", (dec_num % 2));
-    }
-}
-
 int main(int argc, char const *argv[])
 {
     const char *str = "0x100000000";
     std::cout << (bin2dec(str)) << "\n";
-    dec2bin(10);
+
     return 0;
 }
