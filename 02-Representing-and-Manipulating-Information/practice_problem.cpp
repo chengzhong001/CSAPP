@@ -108,15 +108,41 @@ int bic(int x, int m) { return x & ~m; }
 int bool_or(int x, int y)
 {
     int result = bis(x, y);
+    return result;
 }
 
-int bool_or(int x, int y)
+int bool_xor(int x, int y)
 {
     int result = bis(bic(x, y), bic(y, x));
+    return result;
+}
+// 2_14
+void test_2_14()
+{
+    int x = 0x66;
+    int y = 0x39;
+    //bit op
+    printf("0x%.2x & 0x%.2x = 0x%.2x\n", x, y, x & y);
+    printf("0x%.2x | 0x%.2x = 0x%.2x\n", x, y, x | y);
+    printf("~0x%.2x | ~0x%.2x = 0x%.2x\n", x, y, ~x | ~y);
+    printf("0x%.2x & !0x%.2x = 0x%.2x\n", x, y, x & !y);
+
+    //logic op
+    printf("0x%.2x && 0x%.2x = 0x%.2x\n", x, y, x && y);
+    printf("0x%.2x || 0x%.2x = 0x%.2x\n", x, y, x || y);
+    printf("!0x%.2x || !0x%.2x = 0x%.2x\n", x, y, !x || !y);
+    printf("0x%.2x && ~0x%.2x = 0x%.2x\n", x, y, x && ~y);
+}
+
+ //2~15
+int is_equal(int x, int y){
+    return !(x ^ y);
 }
 
 int main(int argc, char const *argv[])
 {
     /* code */
+    test_2_14();
+    std::cout << is_equal(-1,2);
     return 0;
 }
