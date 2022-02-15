@@ -105,10 +105,18 @@ void test_2_12()
 int bis(int x, int m) { return x | m; }
 int bic(int x, int m) { return x & ~m; }
 
+int bool_or(int x, int y)
+{
+    int result = bis(x, y);
+}
 
+int bool_or(int x, int y)
+{
+    int result = bis(bic(x, y), bic(y, x));
+}
 
 int main(int argc, char const *argv[])
 {
-    test_2_12();
+    /* code */
     return 0;
 }
