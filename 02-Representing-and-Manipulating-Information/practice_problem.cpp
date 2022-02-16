@@ -139,10 +139,17 @@ int is_equal(int x, int y){
     return !(x ^ y);
 }
 
+
 int main(int argc, char const *argv[])
 {
     /* code */
     test_2_14();
-    std::cout << is_equal(-1,2);
+    // std::cout << is_equal(-1,2);
+    // int a= -1;
+    int num = 0b0110001110010101;
+    unsigned int u_num = 0b0110001110010101;
+    std::cout << std::bitset<16>(num>>4)<< "\n";
+    std::cout << std::bitset<16>(u_num>>4)<< "\n";
+     std::cout << std::bitset<16>(-1)<< "\n";
     return 0;
 }
