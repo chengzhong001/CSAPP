@@ -141,9 +141,17 @@ int is_equal(int x, int y)
     return !(x ^ y);
 }
 
-
 int main(int argc, char const *argv[])
 {
-   
+
+    std::cout << complement(-15, 8);
+    // 00001010
+    // for (int i = 7; i >= 0; i--)
+    // {
+    //     printf("%hhd ", bits[i]);
+    // }
+    std::cout <<"\n";
+    std::cout << std::bitset<8>(-15) << "\n";
+
     return 0;
 }

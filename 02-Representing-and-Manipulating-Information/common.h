@@ -1,5 +1,6 @@
 // 2-4
 #include <stdio.h>
+#include<stdlib.h>
 
 typedef unsigned char *byte_pointer;
 
@@ -44,5 +45,21 @@ char *decimal2bin(int value, int len)
         data[len] = (value & 1) + 48;
         value = value >> 1;
     }
+    return data;
+}
+
+
+char *complement(int value, int len){
+    int num = -15;
+    char *data = (char *)malloc(len);
+    char *temp = (char *)malloc(len);
+    for (int i = 0; i < len; i++)
+    {   
+        temp[i] = num & 1; //与1就是显示它本身，此时的num是补码,把第i位存入数组
+        num = num >> i;    // num的补码  往右移i位
+    }
+    for (int i = len-1; i >= 0; i--)
+        data[len-i-1] = temp[i]+48;
+    
     return data;
 }
