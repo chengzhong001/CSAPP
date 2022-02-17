@@ -34,3 +34,15 @@ void print_binary(unsigned int number) {
     }
     putc((number & 1) ? '1' : '0', stdout);
 }
+
+char *decimal2bin(int value, int len)
+{
+    char *data = (char *)malloc(len);
+    while (len >= 0)
+    {
+        len -= 1;
+        data[len] = (value & 1) + 48;
+        value = value >> 1;
+    }
+    return data;
+}

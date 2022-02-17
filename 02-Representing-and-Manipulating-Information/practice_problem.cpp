@@ -141,53 +141,9 @@ int is_equal(int x, int y)
     return !(x ^ y);
 }
 
-char *num_to_bin(int value, int len)
-{
-    // char data[9];
-    char *data = (char *)malloc(len);
-    if (value < 0)
-        memset(data, '1', 8);
-    else
-        memset(data, '0', 8);
-    char *temp=(char *)malloc(len);
-    int remainder;
-    int index = 0;
-    char ch;
-    while (value != 0)
-    {
-        value = value / 2;
-        remainder = value % 2;
-        len -= 1;
-        // std::cout << "remainder: "<< remainder << " ";
-
-        // data[index] = remainder + 48;
-        ch = remainder + 48;
-        strcat(temp, &ch);
-        std::cout << temp <<" ";
-        index += 1;
-    }
-    memcpy(data, temp, strlen(temp));
-    std::cout<< data<<"\n";
-    return data;
-}
 
 int main(int argc, char const *argv[])
 {
-    /* code */
-    // test_2_14();
-    // std::cout << is_equal(-1,2);
-    // int a= -1;
-    // int num = 0b0110001110010101;
-    // unsigned int u_num = 0b0110001110010101;
-    // std::cout << std::bitset<16>(num >> 4) << "\n";
-    // std::cout << std::bitset<16>(u_num >> 4) << "\n";
-    // std::cout << std::bitset<16>(-2) << "\n";
-
-    // printf("%s\n", num_to_bin(-10, 8));
-    // printf("%s\n", num_to_bin(10, 8));
-    num_to_bin(10, 8);
-    // std::cout << std::bitset<8>(-10) << "\n";
-    // std::cout << std::bitset<8>(10) << "\n";
-
+   
     return 0;
 }
