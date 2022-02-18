@@ -12,6 +12,7 @@ void test_show_bytes(int val)
     show_int(ival);
     show_float(fval);
     show_pointer(pval);
+
 }
 // 2-5
 void test_2_5()
@@ -145,13 +146,7 @@ int main(int argc, char const *argv[])
 {
 
     std::cout << complement(-15, 8);
-    // 00001010
-    // for (int i = 7; i >= 0; i--)
-    // {
-    //     printf("%hhd ", bits[i]);
-    // }
-    std::cout <<"\n";
-    std::cout << std::bitset<8>(-15) << "\n";
+ 
 
     return 0;
 }
