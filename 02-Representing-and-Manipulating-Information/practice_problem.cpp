@@ -142,10 +142,13 @@ int is_equal(int x, int y)
     return !(x ^ y);
 }
 
+
 int main(int argc, char const *argv[])
 {
 
-    std::cout << complement(-15, 8);
+    // std::cout << complement(-15, 8);
+    std::cout << decimal2binary(10, 8) <<"\n";
+    std::cout << decimal2bin(10, 8) <<"\n";
  
 
     return 0;

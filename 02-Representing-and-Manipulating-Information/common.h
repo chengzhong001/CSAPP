@@ -1,6 +1,7 @@
 // 2-4
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef unsigned char *byte_pointer;
 
@@ -48,6 +49,19 @@ char *decimal2bin(int value, int len)
         value = value >> 1;
     }
     return data;
+}
+
+char *decimal2binary(int num, int len)
+{
+    char *result = new char[32];
+    memset(result, 0, 32);
+    int i = 0;
+    while (num)
+    {
+        result[i++] = num & 1 ? '1' : '0';
+        num >>= 1;
+    }
+    return result;
 }
 
 char *complement(int value, int len)
