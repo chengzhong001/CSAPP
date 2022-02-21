@@ -2,6 +2,7 @@
 #include <bitset>
 #include <iostream>
 #include <string.h>
+#include <limits.h>
 // 2-5
 void test_show_bytes(int val)
 {
@@ -12,7 +13,6 @@ void test_show_bytes(int val)
     show_int(ival);
     show_float(fval);
     show_pointer(pval);
-
 }
 // 2-5
 void test_2_5()
@@ -142,14 +142,32 @@ int is_equal(int x, int y)
     return !(x ^ y);
 }
 
+void T2U()
+{
+    short x = 12345;
+    short mx = -x;
+    show_bytes((byte_pointer)&x, sizeof(short));
+    show_bytes((byte_pointer)&mx, sizeof(short));
+
+    short int v = -12345;
+    unsigned short uv = (unsigned short)v;
+    printf("v = %d, uv = %u\n", v, uv);
+}
+
+// 2-23
+int fun1(unsigned word)
+{
+    return (int)((word << 24) >> 24);
+}
+
+int fun2(unsigned word)
+{
+    return ((int)word << 24) >> 24;
+}
 
 int main(int argc, char const *argv[])
 {
 
-    // std::cout << complement(-15, 8);
-    std::cout << decimal2binary(10, 8) <<"\n";
-    std::cout << decimal2bin(10, 8) <<"\n";
- 
 
     return 0;
 }

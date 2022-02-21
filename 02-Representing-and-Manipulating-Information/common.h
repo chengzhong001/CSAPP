@@ -79,3 +79,30 @@ char *complement(int value, int len)
 
     return data;
 }
+
+// char类型算术移位
+char *arithmetic_shit(char num, int bit)
+{
+    unsigned char a = (unsigned char)num >> bit;
+    return decimal2bin(a, sizeof(char) * 8);
+}
+// char 类型逻辑移位
+char *logic_shit(char num, int bit)
+{
+    char a = num >> bit;
+    return decimal2bin(a, sizeof(char) * 8);
+}
+
+// int类型算术移位
+char *arithmetic_shit(int num, int bit)
+{
+    unsigned a = (unsigned int)num >> bit;
+    return decimal2bin(a, sizeof(int) * 8);
+}
+
+// int类型逻辑移位
+char *logic_shit(int num, int bit)
+{
+    char a = num >> bit;
+    return decimal2bin(a, sizeof(int) * 8);
+}
