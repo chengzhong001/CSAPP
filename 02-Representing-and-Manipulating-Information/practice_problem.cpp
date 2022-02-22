@@ -196,6 +196,15 @@ void test_2_26()
     printf("%s longer than %s: %d\n", s, t, strlonger(s, t));
 }
 
+// 2-27
+int uadd_ok(unsigned x, unsigned y)
+{
+    unsigned sum = x + y;
+    return sum >= x;
+}
+
+
+
 int main(int argc, char const *argv[])
 {
 
@@ -205,7 +214,5 @@ int main(int argc, char const *argv[])
     float a[0];
     std::cout << sum_elements(a, 0) << "\n";
 
-    // test_2_23();
-    test_2_26();
     return 0;
 }
