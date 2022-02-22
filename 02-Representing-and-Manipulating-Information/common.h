@@ -39,19 +39,76 @@ void print_binary(unsigned int number)
     putc((number & 1) ? '1' : '0', stdout);
 }
 
-char *decimal2bin(int value, int len)
+// 10进制转2进制
+char *dec2bin(int value, int len)
 {
     char *data = (char *)malloc(len);
     while (len >= 0)
     {
         len -= 1;
-        data[len] = (value & 1) + 48;
+        data[len] = (value & 1) + '0';
         value = value >> 1;
     }
     return data;
 }
 
-char *decimal2binary(int num, int len)
+// 16进制转2进制
+char *hex2bin(const char *hex, int len = 0)
+{
+    const int ch_bit = 4;
+    if (len == 0)
+        len = strlen(hex) * ch_bit;
+    char *data = (char *)malloc(len);
+
+    memset(data, '0', len);  // data填充 0
+    int i = strlen(hex) - 1; // 倒序
+    while (len >= 0)
+    {
+        len -= ch_bit;
+        if (hex[i] >= '0' && hex[i] <= '9')
+            memcpy(&data[len], dec2bin(hex[i] - '0', ch_bit), ch_bit);
+        else if (hex[i] >= 'a' && hex[i] <= 'f')
+            // data[len] = hex[i] - 'a' + 10;
+            memcpy(&data[len], dec2bin(hex[i] - 'a' + 10, ch_bit), ch_bit);
+        else if (hex[i] >= 'A' && hex[i] <= 'F')
+            memcpy(&data[len], dec2bin(hex[i] - 'A' + 10, ch_bit), ch_bit);
+        i--;
+    }
+    return data;
+}
+// 16进制转10进制
+int hex2dec(const char *hex)
+{ // 2AF5
+    int len = strlen(hex);
+    int result = 0;
+    for (size_t i = 0; i < len; i++)
+    {
+        if (hex[i] >= '0' && hex[i] <= '9')
+            result = result * 16 + (hex[i] - '0');
+        else if (hex[i] >= 'a' && hex[i] <= 'f')
+            result = result * 16 + (hex[i] - 'a' + 10);
+        else if (hex[i] >= 'A' && hex[i] <= 'F')
+            result = result * 16 + (hex[i] - 'A' + 10);
+    }
+    return result;
+}
+// 2进制转10进制
+int bin2dec(const char *bin)
+{
+    int len = strlen(bin);
+    int result = 0;
+    for (size_t i = 0; i < len; i++)
+    {
+        // if (bin[i] == '1')
+        //     result = result * 2 + 1;
+        // else if (bin[i] == '0')
+        //     result = result * 2;
+        result = result * 2 + (bin[i] - '0');
+    }
+    return result;
+}
+
+char *dec2binary(int num, int len)
 {
     char *result = new char[32];
     memset(result, 0, 32);
@@ -77,32 +134,32 @@ char *complement(int value, int len)
     for (int i = len - 1; i >= 0; i--)
         data[len - i - 1] = temp[i] + 48;
 
-    return data;
+    return (char *)data;
 }
 
 // char类型算术移位
 char *arithmetic_shit(char num, int bit)
 {
     unsigned char a = (unsigned char)num >> bit;
-    return decimal2bin(a, sizeof(char) * 8);
+    return dec2bin(a, sizeof(char) * 8);
 }
 // char 类型逻辑移位
 char *logic_shit(char num, int bit)
 {
     char a = num >> bit;
-    return decimal2bin(a, sizeof(char) * 8);
+    return dec2bin(a, sizeof(char) * 8);
 }
 
 // int类型算术移位
 char *arithmetic_shit(int num, int bit)
 {
     unsigned a = (unsigned int)num >> bit;
-    return decimal2bin(a, sizeof(int) * 8);
+    return dec2bin(a, sizeof(int) * 8);
 }
 
 // int类型逻辑移位
 char *logic_shit(int num, int bit)
 {
     char a = num >> bit;
-    return decimal2bin(a, sizeof(int) * 8);
+    return dec2bin(a, sizeof(int) * 8);
 }

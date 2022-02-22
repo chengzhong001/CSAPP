@@ -225,10 +225,12 @@ char *reverse_unsigned_hex(unsigned x, unsigned len)
 int main(int argc, char const *argv[])
 {
 
-    // std::cout << reverse_unsigned(13, 4) << "\n";
-    std::cout << reverse_unsigned_hex(13, 4);
-    char result[4] = {};
-    // result[0] = 1;
+  
+    // std::cout << hex2bin("e") << "\n";
+    // std::cout << hex2bin("1234", 16) << "\n";
+    std::cout << hex2dec("f") << "\n";
+    std::cout << bin2dec("110") << "\n";
+ 
 
     return 0;
 }
