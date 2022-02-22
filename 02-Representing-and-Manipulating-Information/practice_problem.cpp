@@ -2,6 +2,7 @@
 #include <bitset>
 #include <iostream>
 #include <string.h>
+#include <iostream>
 #include <limits.h>
 // 2-5
 void test_show_bytes(int val)
@@ -203,16 +204,31 @@ int uadd_ok(unsigned x, unsigned y)
     return sum >= x;
 }
 
+// 2-28
+unsigned reverse_unsigned_int(unsigned x, unsigned len)
+{
+    unsigned result = 1;
+    for (int i = 0; i < len; i++)
+        result = result << 1;
 
+    return result - x;
+}
+
+char *reverse_unsigned_hex(unsigned x, unsigned len)
+{
+    char *result = (char *)malloc(len / 4);
+    std::cout << sizeof(result) << "\n";
+    sprintf(result, "%x", x);
+    return result;
+}
 
 int main(int argc, char const *argv[])
 {
 
-    int x = 53191;
-    short sx = (short)x;
-    std::cout << sx << "\n";
-    float a[0];
-    std::cout << sum_elements(a, 0) << "\n";
+    // std::cout << reverse_unsigned(13, 4) << "\n";
+    std::cout << reverse_unsigned_hex(13, 4);
+    char result[4] = {};
+    // result[0] = 1;
 
     return 0;
 }
