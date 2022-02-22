@@ -165,19 +165,6 @@ int fun2(unsigned word)
     return ((int)word << 24) >> 24;
 }
 
-// 2-25
-float sum_elements(float a[], unsigned length)
-{
-    int i;
-    float result = 0;
-    if (length == 0)
-        return result;
-    
-    for (i = 0; i < length - 1; i++)
-        result += a[i];
-    return result;
-}
-
 void test_2_23()
 {
     unsigned word1 = 0x00000076;
@@ -190,6 +177,25 @@ void test_2_23()
     printf("word = 0x%.2x func1 = 0x%.2x func1 = 0x%.2x\n", word4, fun1(word4), fun2(word4));
 }
 
+// 2-25
+float sum_elements(float a[], unsigned length)
+{
+    int i;
+    float result = 0;
+    for (i = 0; i < length; i++)
+        result += a[i];
+    return result;
+}
+// 2-26
+int strlonger(const char *s, const char *t) { return strlen(s) > strlen(t); }
+
+void test_2_26()
+{
+    const char *s = "abc";
+    const char *t = "abcd";
+    printf("%s longer than %s: %d\n", s, t, strlonger(s, t));
+}
+
 int main(int argc, char const *argv[])
 {
 
@@ -200,5 +206,6 @@ int main(int argc, char const *argv[])
     std::cout << sum_elements(a, 0) << "\n";
 
     // test_2_23();
+    test_2_26();
     return 0;
 }
