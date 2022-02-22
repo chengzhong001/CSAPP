@@ -228,7 +228,7 @@ int main(int argc, char const *argv[])
   
     // std::cout << hex2bin("e") << "\n";
     // std::cout << hex2bin("1234", 16) << "\n";
-    std::cout << hex2dec("f") << "\n";
+    std::cout << hex2dec("ff") << "\n";
     std::cout << bin2dec("110") << "\n";
  
 

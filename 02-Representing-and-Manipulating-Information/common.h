@@ -40,7 +40,7 @@ void print_binary(unsigned int number)
 }
 
 // 10进制转2进制
-char *dec2bin(int value, int len)
+char *dec2bin(int value, size_t len)
 {
     char *data = (char *)malloc(len);
     while (len >= 0)
@@ -53,15 +53,15 @@ char *dec2bin(int value, int len)
 }
 
 // 16进制转2进制
-char *hex2bin(const char *hex, int len = 0)
+char *hex2bin(const char *hex, size_t len = 0)
 {
-    const int ch_bit = 4;
-    if (len == 0)
-        len = strlen(hex) * ch_bit;
-    char *data = (char *)malloc(len);
+    const size_t ch_bit = 4; // 单个字符占用位数
+    size_t i = strlen(hex) - 1; // 倒序
 
-    memset(data, '0', len);  // data填充 0
-    int i = strlen(hex) - 1; // 倒序
+    len = (len==0) ? strlen(hex) * ch_bit : len;
+    char *data = (char *)malloc(len);
+    memset(data, '0', len);     // data填充 0
+    
     while (len >= 0)
     {
         len -= ch_bit;
@@ -79,7 +79,7 @@ char *hex2bin(const char *hex, int len = 0)
 // 16进制转10进制
 int hex2dec(const char *hex)
 { // 2AF5
-    int len = strlen(hex);
+    size_t len = strlen(hex);
     int result = 0;
     for (size_t i = 0; i < len; i++)
     {
@@ -95,14 +95,11 @@ int hex2dec(const char *hex)
 // 2进制转10进制
 int bin2dec(const char *bin)
 {
-    int len = strlen(bin);
+    size_t len = strlen(bin);
     int result = 0;
     for (size_t i = 0; i < len; i++)
     {
-        // if (bin[i] == '1')
-        //     result = result * 2 + 1;
-        // else if (bin[i] == '0')
-        //     result = result * 2;
+        // result = (bin[i] == '1') ? result * 2 + 1 : result * 2;
         result = result * 2 + (bin[i] - '0');
     }
     return result;
