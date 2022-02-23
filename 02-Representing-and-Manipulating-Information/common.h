@@ -40,12 +40,13 @@ void print_binary(unsigned int number)
 }
 
 // 10进制转2进制
-char *dec2bin(int value, size_t len)
+char *dec2bin(int value, int len)
 {
     char *data = (char *)malloc(len);
     while (len >= 0)
     {
         len -= 1;
+        // printf("%d", len);
         data[len] = (value & 1) + '0';
         value = value >> 1;
     }
@@ -53,15 +54,15 @@ char *dec2bin(int value, size_t len)
 }
 
 // 16进制转2进制
-char *hex2bin(const char *hex, size_t len = 0)
+char *hex2bin(const char *hex, int len = 0)
 {
-    const size_t ch_bit = 4; // 单个字符占用位数
-    size_t i = strlen(hex) - 1; // 倒序
+    const int ch_bit = 4;    // 单个字符占用位数
+    int i = strlen(hex) - 1; // 倒序
 
-    len = (len==0) ? strlen(hex) * ch_bit : len;
+    len = (len == 0) ? strlen(hex) * ch_bit : len;
     char *data = (char *)malloc(len);
-    memset(data, '0', len);     // data填充 0
-    
+    memset(data, '0', len); // data填充 0
+
     while (len >= 0)
     {
         len -= ch_bit;
@@ -134,29 +135,30 @@ char *complement(int value, int len)
     return (char *)data;
 }
 
-// char类型算术移位
-char *arithmetic_shit(char num, int bit)
+// char 类型逻辑移位
+char *logic_shift(char num, int bit)
 {
     unsigned char a = (unsigned char)num >> bit;
     return dec2bin(a, sizeof(char) * 8);
 }
-// char 类型逻辑移位
-char *logic_shit(char num, int bit)
+
+// char类型算术移位
+char *arithmetic_shift(char num, int len)
 {
-    char a = num >> bit;
+    char a = num >> len;
     return dec2bin(a, sizeof(char) * 8);
 }
 
-// int类型算术移位
-char *arithmetic_shit(int num, int bit)
+// int类型逻辑移位
+char *logic_shift(int num, int len)
 {
-    unsigned a = (unsigned int)num >> bit;
+    unsigned a = (unsigned int)num >> len;
     return dec2bin(a, sizeof(int) * 8);
 }
 
-// int类型逻辑移位
-char *logic_shit(int num, int bit)
+// int类型算术移位
+char *arithmetic_shift(int num, int len)
 {
-    char a = num >> bit;
+    int a = num >> len;
     return dec2bin(a, sizeof(int) * 8);
 }

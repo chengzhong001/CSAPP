@@ -2,7 +2,6 @@
 #include <bitset>
 #include <iostream>
 #include <string.h>
-#include <iostream>
 #include <limits.h>
 // 2-5
 void test_show_bytes(int val)
@@ -225,12 +224,15 @@ char *reverse_unsigned_hex(unsigned x, unsigned len)
 int main(int argc, char const *argv[])
 {
 
-  
     // std::cout << hex2bin("e") << "\n";
     // std::cout << hex2bin("1234", 16) << "\n";
     std::cout << hex2dec("ff") << "\n";
     std::cout << bin2dec("110") << "\n";
- 
+    char cha = 0b11110111;
+    std::cout << arithmetic_shift(cha, 2) << "\n";
+    // logic_shift1(cha,8, 2);
+   
+    // std::cout << dec2bin(19,4) << "\n";
 
     return 0;
 }
