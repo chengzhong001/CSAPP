@@ -162,3 +162,7 @@ char *arithmetic_shift(int num, int len)
     int a = num >> len;
     return dec2bin(a, sizeof(int) * 8);
 }
+
+char *complement_add(int x, int y, int n){
+    return dec2bin(x+y, n);
+}

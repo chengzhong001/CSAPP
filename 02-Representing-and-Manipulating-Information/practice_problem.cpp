@@ -221,6 +221,13 @@ char *reverse_unsigned_hex(unsigned x, unsigned len)
     return result;
 }
 
+// 2-29
+int tadd_ok(int x, int y)
+{
+    int sum = x + y;
+    return ((x > 0 && y > 0 && sum > 0) && (x < 0 && y < 0 && sum < 0)) ? 1 : 0;
+}
+
 int main(int argc, char const *argv[])
 {
 
@@ -231,8 +238,10 @@ int main(int argc, char const *argv[])
     char cha = 0b11110111;
     std::cout << arithmetic_shift(cha, 2) << "\n";
     // logic_shift1(cha,8, 2);
-   
+
     // std::cout << dec2bin(19,4) << "\n";
+    std::cout << complement_add(-5, -13, 4) << "\n";
+    std::cout << complement(-1, 4) << "\n";
 
     return 0;
 }
