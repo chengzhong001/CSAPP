@@ -1,3 +1,5 @@
+#ifndef __COMMON_H__
+#define __COMMON_H__
 // 2-4
 #include <stdio.h>
 #include <stdlib.h>
@@ -166,3 +168,6 @@ char *arithmetic_shift(int num, int len)
 char *complement_add(int x, int y, int n){
     return dec2bin(x+y, n);
 }
+
+
+#endif

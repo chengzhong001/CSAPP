@@ -85,10 +85,6 @@
         "iomanip": "cpp",
         "set": "cpp",
         "__bits": "cpp",
-        "forward_list": "cpp",
-        "typeindex": "cpp",
-        "unordered_set": "cpp",
-        "cinttypes": "cpp",
         "variant": "cpp"
     }
 }
