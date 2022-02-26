@@ -243,5 +243,9 @@ int main(int argc, char const *argv[])
     std::cout << complement_add(-5, -13, 4) << "\n";
     std::cout << complement(-1, 4) << "\n";
 
+    unsigned x = 0b11111111111111111111111111111111;
+    x = x>>2;
+    std::cout << std::bitset<32>(x) << "\n";
+
     return 0;
 }
