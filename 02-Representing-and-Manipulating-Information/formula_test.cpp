@@ -13,5 +13,6 @@ int main(int argc, char const *argv[])
     int x = 0b1010;
     std::cout << T2U(x, 4) << std::endl;
     std::cout << U2T(x, 4) << std::endl;
+    std::cout << pow(2, 3) << std::endl;
     return 0;
 }

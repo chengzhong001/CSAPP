@@ -5,7 +5,6 @@
 #include <string.h>
 #include <stdio.h>
 
-
 // 二进制转无符号数
 unsigned B2U(const char *data)
 {
@@ -32,8 +31,7 @@ int B2T(const char *data)
 
     return result - value;
 }
-
-
+// 无符号数转二进制
 char *U2B(unsigned value, int len)
 {
     char *data = (char *)malloc(len);
@@ -46,7 +44,7 @@ char *U2B(unsigned value, int len)
     }
     return data;
 }
-
+// 有符号数转二进制
 char *T2B(int value, int len)
 {
     char *data = (char *)malloc(len);
@@ -58,7 +56,7 @@ char *T2B(int value, int len)
     }
     return data;
 }
-
+// 十进制转二进制
 char *dec2bin(int value, int len)
 {
     char *data = (char *)malloc(len);
@@ -71,14 +69,28 @@ char *dec2bin(int value, int len)
     return data;
 }
 
+// 有符号转无符号数
 unsigned T2U(int value, int len)
 {
+    // T2U(x,w) = x + 2^w   x < 0
+    // T2U(x,w) = x         x >= 0
     return B2U(dec2bin(value, len));
 }
 
+// 无符号转有符号数
 int U2T(unsigned value, int len)
 {
+    // U2T(u,w) = u - 2^w   u > TMax
+    // U2T(u,w) = u         u <= TMax
     return B2T(dec2bin(value, len));
+}
+// 计算x的y次方
+int pow(int x, int y)
+{
+    int result = 1;
+    for (int i = 0; i < y; i++)
+        result *= x;
+    return result;
 }
 
 #endif
